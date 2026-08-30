@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modelo OSI interactivo</title>
+    <meta
+      name="description"
+      content="Proyecto educativo interactivo para aprender las 7 capas del modelo OSI, la encapsulación y protocolos habituales."
+    >
+    <meta name="theme-color" content="#2b2d42">
+    <meta property="og:title" content="Modelo OSI interactivo">
+    <meta
+      property="og:description"
+      content="Explora las capas OSI, simula el viaje de los datos y practica con preguntas rápidas."
+    >
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="site-header" aria-label="Cabecera principal">
+      <nav class="nav-shell" aria-label="Navegación principal">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+          <span class="brand-mark" aria-hidden="true">OSI</span>
+          <span>Modelo OSI</span>
+        </a>
+        <div class="nav-links" aria-label="Secciones">
+          <a href="#mapa">Mapa</a>
+          <a href="#capas">Capas</a>
+          <a href="#simulador">Simulador</a>
+          <a href="#quiz">Quiz</a>
+          <a href="#guia">Guía</a>
+          <a href="#referencias">Refs</a>
+        </div>
+        <button class="theme-toggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+          <span class="theme-toggle__track" aria-hidden="true">
+            <span class="theme-toggle__knob"></span>
+          </span>
+        </button>
+      </nav>
+    </header>
+
+    <main id="contenido">
+      <section class="hero section-reveal" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Redes desde cero</p>
+          <h1 id="hero-title">Modelo OSI interactivo</h1>
+          <p class="hero-lede">
+            Explora las 7 capas, observa cómo viajan los datos y practica con protocolos reales.
+          </p>
+          <div class="hero-actions" aria-label="Acciones principales">
+            <a class="button button-primary" href="#capas">Empezar</a>
+            <a class="button button-secondary" href="#simulador">Ver simulador</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Resumen visual del modelo OSI">
+          <div class="network-map" aria-hidden="true">
+            <span class="node node-a"></span>
+            <span class="node node-b"></span>
+            <span class="node node-c"></span>
+            <span class="node node-d"></span>
+            <span class="path path-one"></span>
+            <span class="path path-two"></span>
+            <span class="path path-three"></span>
+          </div>
+          <div class="mini-stack" id="heroStack"></div>
+        </div>
+      </section>
+
+      <section class="study-strip section-reveal" aria-label="Datos clave">
+        <article>
+          <span>7</span>
+          <p>capas con funciones separadas</p>
+        </article>
+        <article>
+          <span>4</span>
+          <p>unidades de datos principales</p>
+        </article>
+        <article>
+          <span>0</span>
+          <p>coste de hosting en GitHub Pages</p>
+        </article>
+      </section>
+
+      <section class="layer-map section-reveal" id="mapa" aria-labelledby="mapa-title">
+        <div class="section-heading">
+          <h2 id="mapa-title">Mapa interactivo</h2>
+          <p>
+            Relaciones entre capas, protocolos, documentos oficiales y organismos de normalización.
+          </p>
+        </div>
+
+        <div class="map-workbench">
+          <div class="osi-diagram" id="osiDiagram" aria-label="Gráfico interactivo de las capas OSI"></div>
+          <article class="map-detail" id="mapDetail" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="learn-layout section-reveal" id="capas" aria-labelledby="capas-title">
+        <div class="section-heading">
+          <h2 id="capas-title">Aprende cada capa</h2>
+          <p>
+            Selecciona una capa para ver su papel, sus unidades de datos y ejemplos habituales.
+          </p>
+        </div>
+
+        <div class="layer-workbench">
+          <div class="layer-selector" aria-label="Selector de capas" id="layerSelector"></div>
+
+          <div class="stack-panel" aria-label="Pila del modelo OSI">
+            <div class="stack-marker" aria-hidden="true"></div>
+            <div class="layer-stack" id="layerStack"></div>
+          </div>
+
+          <article class="layer-detail" id="layerDetail" aria-live="polite"></article>
+        </div>
+      </section>
+
+      <section class="simulator section-reveal" id="simulador" aria-labelledby="simulador-title">
+        <div class="section-heading">
+          <h2 id="simulador-title">Encapsulación paso a paso</h2>
+          <p>
+            Sigue una solicitud web desde la aplicación hasta el medio físico y vuelve a subir la pila.
+          </p>
+        </div>
+
+        <div class="simulator-grid">
+          <div class="simulation-stack" aria-label="Estado de la pila durante la simulación">
+            <div class="simulation-layers" id="simulationLayers"></div>
+          </div>
+
+          <div class="simulation-console">
+            <div class="mode-switch" role="group" aria-label="Modo de simulación">
+              <button class="mode-button is-active" type="button" data-mode="send">Enviar</button>
+              <button class="mode-button" type="button" data-mode="receive">Recibir</button>
+            </div>
+
+            <div class="packet-card" aria-live="polite">
+              <span class="packet-label" id="packetLabel">Datos</span>
+              <div class="packet-body" id="packetBody"></div>
+            </div>
+
+            <div class="simulation-copy" id="simulationCopy"></div>
+
+            <div class="simulation-controls" aria-label="Controles del simulador">
+              <button class="button button-secondary" type="button" id="prevStep">Anterior</button>
+              <button class="button button-primary" type="button" id="nextStep">Siguiente</button>
+              <button class="button button-ghost" type="button" id="resetStep">Reiniciar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz-zone section-reveal" id="quiz" aria-labelledby="quiz-title">
+        <div class="section-heading">
+          <h2 id="quiz-title">Practica sin salir de la página</h2>
+          <p>
+            Responde preguntas cortas y revisa la explicación al instante.
+          </p>
+        </div>
+
+        <div class="quiz-card" id="quizCard" aria-live="polite"></div>
+      </section>
+
+      <section class="guide section-reveal" id="guia" aria-labelledby="guia-title">
+        <div class="section-heading">
+          <h2 id="guia-title">Guía rápida</h2>
+          <p>
+            Repasa qué hace cada capa y qué ejemplos aparecen en exámenes o entrevistas técnicas.
+          </p>
+        </div>
+
+        <div class="guide-grid" id="guideGrid"></div>
+      </section>
+
+      <section class="references section-reveal" id="referencias" aria-labelledby="referencias-title">
+        <div class="section-heading">
+          <h2 id="referencias-title">Referencias oficiales</h2>
+          <p>
+            Enlaces a RFC, recomendaciones y estándares publicados por organismos oficiales.
+          </p>
+        </div>
+
+        <div class="reference-tools">
+          <div class="reference-search">
+            <label for="referenceSearch">Buscar protocolo o estándar</label>
+            <input id="referenceSearch" type="search" autocomplete="off" placeholder="Ejemplo: TCP, IEEE, DNS">
+          </div>
+          <div class="reference-filters" id="referenceFilters" role="group" aria-label="Filtrar referencias por capa"></div>
+        </div>
+
+        <div class="reference-grid" id="referenceGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="glossary section-reveal" aria-labelledby="glosario-title">
+        <div class="section-heading">
+          <h2 id="glosario-title">Glosario esencial</h2>
+          <p>
+            Conceptos mínimos para entender el modelo sin perderse en siglas.
+          </p>
+        </div>
+
+        <div class="glossary-list">
+          <details>
+            <summary>Encapsulación</summary>
+            <p>
+              Proceso en el que cada capa añade su propia información de control a los datos antes de enviarlos.
+            </p>
+          </details>
+          <details>
+            <summary>Desencapsulación</summary>
+            <p>
+              Proceso inverso: cada capa lee y retira la información que le corresponde al recibir los datos.
+            </p>
+          </details>
+          <details>
+            <summary>PDU</summary>
+            <p>
+              Unidad de datos que maneja una capa. Por ejemplo, segmento en transporte, paquete en red y trama en enlace.
+            </p>
+          </details>
+          <details>
+            <summary>Protocolo</summary>
+            <p>
+              Conjunto de reglas que permite que dos sistemas se entiendan, como TCP, IP, Ethernet, DNS o HTTP.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Proyecto estático preparado para GitHub Pages en el repositorio pedri77/modelo_OSI.
+      </p>
+      <a href="https://github.com/pedri77/modelo_OSI" rel="noreferrer">Repositorio</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.1/dist/cytoscape.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

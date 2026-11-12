@@ -12,6 +12,11 @@ Proyecto educativo estático para explicar las 7 capas del modelo OSI de forma i
 - Referencias oficiales a RFC, IEEE, ISO, ITU-T, Ecma y Microsoft Open Specifications.
 - Tema claro y oscuro con preferencia guardada en el navegador.
 
+## Para seguir
+
+- [La torre OSI: anatomía de un ataque](https://pedri77.github.io/torre-osi/): un ataque recorre las 7 capas de L1 a L7, cada paso con su técnica ATT&CK, y al final eliges tres controles para ver si la torre aguanta.
+- [Catálogo de vulnerabilidades por capa OSI](https://pedri77.github.io/vulnerabilidades-capas-osi/): clase de ataque, CWE, ATT&CK, control y detección por capa.
+
 ## Estructura
 
 ```text
